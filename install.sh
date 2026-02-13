@@ -18,8 +18,9 @@ cp -r "$SCRIPT_DIR/sounds/"* "$DEST_DIR/wc3sounds/"
 # Copy scripts
 echo "Copying hook scripts to $DEST_DIR/ ..."
 cp "$SCRIPT_DIR/scripts/wc3_accept.sh" "$DEST_DIR/wc3_accept.sh"
+cp "$SCRIPT_DIR/scripts/wc3_ask.sh" "$DEST_DIR/wc3_ask.sh"
 cp "$SCRIPT_DIR/scripts/wc3_complete.sh" "$DEST_DIR/wc3_complete.sh"
-chmod +x "$DEST_DIR/wc3_accept.sh" "$DEST_DIR/wc3_complete.sh"
+chmod +x "$DEST_DIR/wc3_accept.sh" "$DEST_DIR/wc3_ask.sh" "$DEST_DIR/wc3_complete.sh"
 
 echo ""
 echo "Done! Files installed to $DEST_DIR/"
@@ -37,6 +38,12 @@ cat <<'JSONEOF'
         "command": "$HOME/.claude/wc3_accept.sh"
       }
     ],
+    "Notification": [
+      {
+        "type": "command",
+        "command": "$HOME/.claude/wc3_ask.sh"
+      }
+    ],
     "Stop": [
       {
         "type": "command",
@@ -48,6 +55,6 @@ cat <<'JSONEOF'
 JSONEOF
 echo ""
 echo "If you already have hooks configured, merge the entries into"
-echo "your existing UserPromptSubmit and Stop arrays."
+echo "your existing UserPromptSubmit, Notification, and Stop arrays."
 echo ""
 echo "Lok'tar ogar! Ready to code."
